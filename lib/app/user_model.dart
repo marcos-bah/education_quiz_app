@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class UserModel extends ChangeNotifier {
   int score = 0;
   int scoreLocal = 0;
+  double money = 0;
 
   void setPointsGlobal(int points) {
     score += points;
@@ -24,6 +25,18 @@ class UserModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setMoney(double money) {
+    this.money += money;
+    notifyListeners();
+  }
+
+  void resetMoney() {
+    money = 0;
+    notifyListeners();
+  }
+
   get getPointsGlobal => score;
   get getPointsLocal => scoreLocal;
+  get getIsLoss => money < 0;
+  get getMoney => getIsLoss ? "-R\$ ${money.abs()}" : "R\$ $money";
 }

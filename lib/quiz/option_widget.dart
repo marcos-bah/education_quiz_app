@@ -50,6 +50,9 @@ class _OptionWidgetState extends State<OptionWidget> {
                       setState(() {
                         if (!quizController.quiz.question.isClicked) {
                           quizController.click();
+                          user.setMoney(quizController
+                              .quiz.question.scope["value"]
+                              ?.toDouble());
                           if (widget.options[index].isCorrect) {
                             _colors[index] = Colors.green;
                             user.setPointsGlobal(quizController.quiz.points());
@@ -57,6 +60,11 @@ class _OptionWidgetState extends State<OptionWidget> {
                             quizController.quiz.hit();
                           } else {
                             _colors[index] = Colors.red;
+                            for (int i = 0; i < widget.options.length; i++) {
+                              if (widget.options[i].isCorrect) {
+                                _colors[i] = Colors.green;
+                              }
+                            }
                           }
                         }
                       });

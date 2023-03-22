@@ -9,8 +9,11 @@ class QuizController extends ChangeNotifier {
   QuizController() {
     QuestionModel q1 = QuestionModel(
       primaryText: "João",
-      secondaryText: "R\$ 4 reais para seus pais, ele tinha R\$ 5 reais",
-      scopeText: "pediu",
+      secondaryText: "R\$ 4 reais para seus pais",
+      scope: {
+        "text": "pediu",
+        "value": 4,
+      },
       isLost: false,
       options: [
         OptionModel(
@@ -71,7 +74,10 @@ class QuizController extends ChangeNotifier {
         (index) => QuestionModel(
           primaryText: "Rodrigo",
           secondaryText: "$index ao seu amigo Pedro",
-          scopeText: "deu",
+          scope: {
+            "text": "deu",
+            "value": index,
+          },
           isLost: true,
           options: [
             OptionModel(

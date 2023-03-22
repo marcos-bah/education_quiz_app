@@ -130,7 +130,7 @@ class _QuizPageState extends State<QuizPage> {
                       text: " ",
                     ),
                     TextSpan(
-                      text: quizController.quiz.question.scopeText,
+                      text: quizController.quiz.question.scope["text"],
                       style: Theme.of(context).textTheme.bodyText1!.copyWith(
                             color: quizController.quiz.question.color,
                           ),
@@ -149,23 +149,27 @@ class _QuizPageState extends State<QuizPage> {
             const SizedBox(
               height: 20,
             ),
-            SizedBox(
-              width: 330,
-              child: Text.rich(
-                TextSpan(
-                  text: "Seu dinheiro: ",
-                  style: Theme.of(context).textTheme.bodyText1,
-                  children: [
-                    TextSpan(
-                      text: "2 reais.",
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            color: const Color(0xff1F8C55),
-                          ),
-                    ),
-                  ],
+            Consumer<UserModel>(builder: (context, user, child) {
+              return SizedBox(
+                width: 330,
+                child: Text.rich(
+                  TextSpan(
+                    text: "Seu dinheiro: ",
+                    style: Theme.of(context).textTheme.bodyText1,
+                    children: [
+                      TextSpan(
+                        text: "${user.getMoney} reais.",
+                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                              color: user.getIsLoss
+                                  ? Colors.red
+                                  : const Color(0xff1F8C55),
+                            ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ),
+              );
+            }),
             const SizedBox(
               height: 20,
             ),

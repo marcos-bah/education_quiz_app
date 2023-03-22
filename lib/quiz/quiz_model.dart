@@ -53,18 +53,19 @@ class OptionModel {
 
 class QuestionModel {
   String primaryText;
+  Map<String, dynamic> scope;
   String secondaryText;
-  String scopeText;
   bool isLost;
   List<OptionModel> options;
   bool clicked = false;
 
-  QuestionModel(
-      {required this.primaryText,
-      required this.secondaryText,
-      required this.scopeText,
-      required this.isLost,
-      required this.options});
+  QuestionModel({
+    required this.primaryText,
+    required this.scope,
+    required this.secondaryText,
+    required this.isLost,
+    required this.options,
+  });
 
   Color get color => isLost ? const Color(0xffA40021) : const Color(0xff1F8654);
   bool get isClicked => clicked;
