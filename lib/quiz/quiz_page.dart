@@ -1,9 +1,12 @@
 import 'package:education_quiz_app/app/user_model.dart';
 import 'package:education_quiz_app/quiz/option_widget.dart';
 import 'package:education_quiz_app/quiz/quiz_controller.dart';
-import 'package:education_quiz_app/quiz/result_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../result/result_page.dart';
+import '../start/start_page.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({
@@ -66,7 +69,13 @@ class _QuizPageState extends State<QuizPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const StartPage(),
+                    ),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   shape: const CircleBorder(),
                   padding: const EdgeInsets.all(0),

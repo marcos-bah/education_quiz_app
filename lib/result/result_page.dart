@@ -1,6 +1,6 @@
 import 'package:education_quiz_app/app/user_model.dart';
 import 'package:education_quiz_app/quiz/quiz_controller.dart';
-import 'package:education_quiz_app/quiz/result_widget.dart';
+import 'package:education_quiz_app/result/result_widget.dart';
 import 'package:education_quiz_app/start/start_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

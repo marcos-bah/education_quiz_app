@@ -80,7 +80,7 @@ class QuizModel {
   final Category category;
   final List<QuestionModel> questions;
   final int score;
-  int position = 1;
+  int position = 0;
   int hits = 0;
 
   QuizModel({
@@ -104,7 +104,6 @@ class QuizModel {
   }
 
   void setPos(int pos) {
-    if (pos == 0) pos = 1;
     position = pos;
   }
 
