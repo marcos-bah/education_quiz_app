@@ -21,6 +21,7 @@ class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double widthReal = width <= 340 ? width * 0.8 : 340;
     return Consumer<QuizController>(builder: (context, quizController, child) {
       return Scaffold(
         appBar: AppBar(
@@ -98,7 +99,7 @@ class _QuizPageState extends State<QuizPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: 300,
+                  width: widthReal - 40,
                   height: 12,
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(16)),
@@ -129,7 +130,7 @@ class _QuizPageState extends State<QuizPage> {
               height: 40,
             ),
             SizedBox(
-              width: 330,
+              width: widthReal,
               child: Text.rich(
                 TextSpan(
                   text: quizController.quiz.question.primaryText,
@@ -160,7 +161,7 @@ class _QuizPageState extends State<QuizPage> {
             ),
             Consumer<UserModel>(builder: (context, user, child) {
               return SizedBox(
-                width: 330,
+                width: widthReal,
                 child: Text.rich(
                   TextSpan(
                     text: "Seu dinheiro: ",

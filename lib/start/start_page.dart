@@ -18,6 +18,7 @@ class _StartPageState extends State<StartPage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double widthReal = width <= 340 ? width * 0.8 : 340;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -33,7 +34,7 @@ class _StartPageState extends State<StartPage> {
             width: width,
           ),
           Container(
-            width: 340,
+            width: widthReal,
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: Colors.white,

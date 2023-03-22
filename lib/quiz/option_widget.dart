@@ -26,6 +26,8 @@ class _OptionWidgetState extends State<OptionWidget> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double widthReal = width <= 340 ? width * 0.8 : 340;
     return Consumer<QuizController>(builder: (context, quizController, child) {
       if (!quizController.quiz.question.isClicked) {
         _colors = List.generate(
@@ -34,7 +36,7 @@ class _OptionWidgetState extends State<OptionWidget> {
         );
       }
       return SizedBox(
-        width: 330,
+        width: widthReal,
         child: Column(
           children: [
             ...List.generate(

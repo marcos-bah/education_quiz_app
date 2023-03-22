@@ -16,6 +16,7 @@ class _StartContextPageState extends State<StartContextPage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double widthReal = width <= 340 ? width * 0.8 : 340;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -31,7 +32,7 @@ class _StartContextPageState extends State<StartContextPage> {
             width: width,
           ),
           Container(
-            width: 340,
+            width: widthReal,
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: Colors.white,
@@ -40,11 +41,11 @@ class _StartContextPageState extends State<StartContextPage> {
             child: Text.rich(
               TextSpan(
                 text: "Nesse jogo, você é ",
-                style: Theme.of(context).textTheme.bodyText1,
+                style: Theme.of(context).textTheme.bodyText2,
                 children: [
                   TextSpan(
                     text: "João",
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
                           color: const Color(0xff1F8C55),
                         ),
                   ),
@@ -57,7 +58,7 @@ class _StartContextPageState extends State<StartContextPage> {
             width: width,
           ),
           Container(
-            width: 340,
+            width: widthReal,
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: Colors.white,
@@ -66,11 +67,11 @@ class _StartContextPageState extends State<StartContextPage> {
             child: Text.rich(
               TextSpan(
                 text: "Um jovem que está no ensino fundamental. ",
-                style: Theme.of(context).textTheme.bodyText1,
+                style: Theme.of(context).textTheme.bodyText2,
                 children: [
                   TextSpan(
                     text: "Sem nenhum dinheiro",
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
                           color: const Color(0xffA40021),
                         ),
                   ),

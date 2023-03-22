@@ -11,6 +11,7 @@ class ResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double widthReal = width <= 340 ? width * 0.8 : 340;
     return Consumer<UserModel>(builder: (context, user, child) {
       return Scaffold(
         appBar: AppBar(
@@ -57,7 +58,7 @@ class ResultPage extends StatelessWidget {
               height: 60,
             ),
             Container(
-              width: 340,
+              width: widthReal,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.white,
