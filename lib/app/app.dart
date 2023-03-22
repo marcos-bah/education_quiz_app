@@ -1,6 +1,7 @@
 import 'package:education_quiz_app/app/theme.dart';
-import 'package:education_quiz_app/start/start_page.dart';
 import 'package:flutter/material.dart';
+
+import '../home/home_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -11,7 +12,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Quiz Educação',
       theme: ThemaApp.global,
-      home: const StartPage(),
+      home: const HomePage(),
     );
   }
 }

@@ -1,11 +1,18 @@
+import 'package:education_quiz_app/quiz/quiz_controller.dart';
 import 'package:education_quiz_app/start/rules.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../quiz/quiz_page.dart';
 
-class StartPage extends StatelessWidget {
+class StartPage extends StatefulWidget {
   const StartPage({super.key});
 
+  @override
+  State<StartPage> createState() => _StartPageState();
+}
+
+class _StartPageState extends State<StartPage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -66,22 +73,27 @@ class StartPage extends StatelessWidget {
             height: 120,
             width: width,
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const QuizPage(),
-                ),
-              );
-            },
-            child: Text(
-              "Começar",
-              style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                    color: const Color(0xffF4F3F6),
-                    fontWeight: FontWeight.bold,
+          Consumer<QuizController>(builder: (context, quizController, child) {
+            return TextButton(
+              onPressed: () {
+                if (quizController.quiz.isLastQuestion) {
+                  quizController.reset();
+                }
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const QuizPage(),
                   ),
-            ),
-          )
+                );
+              },
+              child: Text(
+                !quizController.quiz.isLastQuestion ? "Continuar" : "Começar",
+                style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      color: const Color(0xffF4F3F6),
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+            );
+          })
         ],
       ),
     );
