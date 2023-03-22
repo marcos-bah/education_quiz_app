@@ -35,6 +35,12 @@ class UserModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void reset() {
+    resetPointsGlobal();
+    resetPointsLocal();
+    resetMoney();
+  }
+
   get getPointsGlobal => score;
   get getPointsLocal => scoreLocal;
   get getIsLoss => money < 0;

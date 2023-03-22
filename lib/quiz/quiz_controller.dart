@@ -9,36 +9,36 @@ class QuizController extends ChangeNotifier {
   QuizController() {
     QuestionModel q1 = QuestionModel(
       primaryText: "João",
-      secondaryText: "R\$ 4 reais para seus pais",
       scope: {
         "text": "pediu",
         "value": 4,
       },
+      secondaryText: "R\$ 4 reais para seus pais",
       isLost: false,
       options: [
         OptionModel(
-          primaryText: "João",
+          primaryText: "João agora",
           secondaryText: "R\$ 1 real",
           scopeText: "tem",
           isLost: false,
           isCorrect: false,
         ),
         OptionModel(
-          primaryText: "João",
-          secondaryText: "R\$ 9 reais",
+          primaryText: "João agora",
+          secondaryText: "R\$ 4 reais",
           scopeText: "tem",
           isLost: false,
           isCorrect: true,
         ),
         OptionModel(
-          primaryText: "João",
+          primaryText: "João está",
           secondaryText: "R\$ 3 reais",
-          scopeText: "tem",
-          isLost: false,
+          scopeText: "devendo",
+          isLost: true,
           isCorrect: false,
         ),
         OptionModel(
-          primaryText: "João",
+          primaryText: "João agora",
           secondaryText: "R\$ 5 reais",
           scopeText: "tem",
           isLost: false,
@@ -65,49 +65,10 @@ class QuizController extends ChangeNotifier {
   }
 
   void reset() {
-    quiz = QuizModel(
-      id: 0,
-      category: Category.mathSum,
-      score: 100,
-      questions: List.generate(
-        5,
-        (index) => QuestionModel(
-          primaryText: "Rodrigo",
-          secondaryText: "$index ao seu amigo Pedro",
-          scope: {
-            "text": "deu",
-            "value": index,
-          },
-          isLost: true,
-          options: [
-            OptionModel(
-                primaryText: "um",
-                secondaryText: "bolo",
-                scopeText: "de chocolate",
-                isLost: true,
-                isCorrect: true),
-            OptionModel(
-                primaryText: "um",
-                secondaryText: "bolo",
-                scopeText: "de cenoura",
-                isLost: true,
-                isCorrect: false),
-            OptionModel(
-                primaryText: "um",
-                secondaryText: "bolo",
-                scopeText: "de laranja",
-                isLost: true,
-                isCorrect: false),
-            OptionModel(
-                primaryText: "um",
-                secondaryText: "bolo",
-                scopeText: "de limão",
-                isLost: true,
-                isCorrect: false),
-          ],
-        ),
-      ),
-    );
+    for (var element in quiz.questions) {
+      element.click(action: false);
+    }
+    quiz.setPos(0);
     notifyListeners();
   }
 }

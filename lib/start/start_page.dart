@@ -1,3 +1,4 @@
+import 'package:education_quiz_app/app/user_model.dart';
 import 'package:education_quiz_app/quiz/quiz_controller.dart';
 import 'package:education_quiz_app/start/rules.dart';
 import 'package:flutter/material.dart';
@@ -74,25 +75,28 @@ class _StartPageState extends State<StartPage> {
             width: width,
           ),
           Consumer<QuizController>(builder: (context, quizController, child) {
-            return TextButton(
-              onPressed: () {
-                if (quizController.quiz.isLastQuestion) {
-                  quizController.reset();
-                }
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const QuizPage(),
-                  ),
-                );
-              },
-              child: Text(
-                !quizController.quiz.isLastQuestion ? "Continuar" : "Começar",
-                style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                      color: const Color(0xffF4F3F6),
-                      fontWeight: FontWeight.bold,
+            return Consumer<UserModel>(builder: (context, user, child) {
+              return TextButton(
+                onPressed: () {
+                  if (quizController.quiz.isLastQuestion) {
+                    quizController.reset();
+                    user.reset();
+                  }
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const QuizPage(),
                     ),
-              ),
-            );
+                  );
+                },
+                child: Text(
+                  !quizController.quiz.isLastQuestion ? "Continuar" : "Começar",
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                        color: const Color(0xffF4F3F6),
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+              );
+            });
           })
         ],
       ),

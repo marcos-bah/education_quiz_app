@@ -104,6 +104,7 @@ class QuizModel {
   }
 
   void setPos(int pos) {
+    if (pos == 0) pos = 1;
     position = pos;
   }
 
